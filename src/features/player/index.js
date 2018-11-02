@@ -11,8 +11,8 @@ function Player(props) {
       left: props.position[0],
       backgroundImage: `url('${skele}')`,
       backgroundPosition: '0  384px',
-      width: '70px',
-      height: '70px'
+      width: '60px',
+      height: '60px'
     }}>
     </div>
   )

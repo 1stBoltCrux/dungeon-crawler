@@ -4,8 +4,8 @@ function Map() {
   return(
     <div
       style={{
-        width: '800px',
-        height: '400px',
+        width: '1200px',
+        height: '600px',
         backgroundColor: 'black',
         border: '4px, solid, white',
       }}/>
