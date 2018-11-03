@@ -16,6 +16,12 @@ export default function handleMovement(player) {
     }
   }
 
+function getWalkIndex(){
+    const walkIndex = store.getState().player.walkIndex
+    console.log(walkIndex);
+    return walkIndex >= 8 ? 0 : walkIndex + 1
+  }
+
   function observeBoundaries(oldPosition, newPosition) {
     return (newPosition[0] >= 0 && newPosition[0] <= MAP_WIDTH - SPRITE_SIZE) &&
            (newPosition[1] >= 0 && newPosition[1] <= MAP_HEIGHT - SPRITE_SIZE)
@@ -31,6 +37,7 @@ export default function handleMovement(player) {
   }
 
   function dispatchMove(direction, newPosition) {
+    const walkIndex = getWalkIndex()
     const oldPosition = store.getState().player.position
     console.log(oldPosition);
 
@@ -40,7 +47,8 @@ export default function handleMovement(player) {
       payload: {
         position: newPosition,
         direction: direction,
-        spriteLocation: getSpriteLocation(direction),
+        spriteLocation: getSpriteLocation(direction, walkIndex),
+        walkIndex: walkIndex
       }
     })
   }
@@ -54,16 +62,16 @@ export default function handleMovement(player) {
     dispatchMove(direction, newPosition)
   }
 
-  function getSpriteLocation(direction){
+  function getSpriteLocation(direction, walkIndex){
     switch(direction) {
       case 'WEST':
-        return `0px 190px`
+        return `${(SPRITE_SIZE + 5) * walkIndex}px ${SPRITE_SIZE * 3 + 10}px`
       case 'EAST':
-        return `0px 60px`
+        return `${(SPRITE_SIZE + 5) * walkIndex}px ${SPRITE_SIZE * 1}px`
       case 'NORTH':
-        return `0px 0px`
+        return `${(SPRITE_SIZE + 5) * walkIndex}px ${SPRITE_SIZE * 0}px`
       case 'SOUTH':
-        return `0px 120px`
+        return `${(SPRITE_SIZE + 5) * walkIndex}px ${SPRITE_SIZE * 2}px`
     }
   }
 

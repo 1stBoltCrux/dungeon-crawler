@@ -2,6 +2,7 @@ import React from 'react'
 import {SPRITE_SIZE} from '../../config/constants'
 import './styles.css'
 import { connect } from 'react-redux'
+import grass from './tiles/grass.jpeg'
 
 function getTileSprite(type){
   switch(type) {
@@ -42,8 +43,8 @@ function Map(props) {
       style={{
         width: SPRITE_SIZE * 20,
         height: SPRITE_SIZE * 10,
-        backgroundColor: 'black',
-        border: '4px, solid, white',
+        backgroundImage: `url(${grass})`,
+        border: '4px, solid, black',
       }}>
       {
         props.tiles.map(row =>  <MapRow tiles={row}/>)
