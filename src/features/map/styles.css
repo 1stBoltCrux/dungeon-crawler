@@ -1,7 +1,12 @@
+
+
 .tile {
   display: inline-flex;
 }
 
+.row {
+  line-height: 0;
+}
 .rock {
   background-image: url('./tiles/rock.png');
   background-size: contain;

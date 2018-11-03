@@ -3,7 +3,6 @@ import { SPRITE_SIZE, MAP_WIDTH, MAP_HEIGHT } from '../../config/constants'
 
 export default function handleMovement(player) {
 
-
   function getNewPosition(oldPosition, direction) {
     switch(direction) {
       case 'WEST':
@@ -31,7 +30,7 @@ export default function handleMovement(player) {
     return nextTile < 5
   }
 
-  function dispatchMove(newPosition) {
+  function dispatchMove(direction, newPosition) {
     const oldPosition = store.getState().player.position
     console.log(oldPosition);
 
@@ -40,6 +39,8 @@ export default function handleMovement(player) {
       type: 'MOVE_PLAYER',
       payload: {
         position: newPosition,
+        direction: direction,
+        spriteLocation: getSpriteLocation(direction),
       }
     })
   }
@@ -50,7 +51,20 @@ export default function handleMovement(player) {
     console.log(newPosition);
 
     if(observeBoundaries(oldPosition, newPosition) && observeImpassable(oldPosition, newPosition))
-    dispatchMove(newPosition)
+    dispatchMove(direction, newPosition)
+  }
+
+  function getSpriteLocation(direction){
+    switch(direction) {
+      case 'WEST':
+        return `0px 190px`
+      case 'EAST':
+        return `0px 60px`
+      case 'NORTH':
+        return `0px 0px`
+      case 'SOUTH':
+        return `0px 120px`
+    }
   }
 
   function handleKeyDown(e) {

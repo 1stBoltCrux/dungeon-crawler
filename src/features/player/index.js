@@ -10,7 +10,7 @@ function Player(props) {
       top: props.position[1],
       left: props.position[0],
       backgroundImage: `url('${skele}')`,
-      backgroundPosition: '0  384px',
+      backgroundPosition: props.spriteLocation,
       width: '60px',
       height: '60px'
     }}>
