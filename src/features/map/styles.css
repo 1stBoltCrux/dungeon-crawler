@@ -1,0 +1,25 @@
+.tile {
+  display: inline-flex;
+}
+
+.rock {
+  background-image: url('./tiles/rock.png');
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.tree {
+  background-image: url('./tiles/tree.png');
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+
+}
+
+.stone-floor {
+  background-image: url('./tiles/stone-floor.png');
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+}
